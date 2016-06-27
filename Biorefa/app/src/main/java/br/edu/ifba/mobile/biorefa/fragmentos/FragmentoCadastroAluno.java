@@ -1,6 +1,8 @@
 package br.edu.ifba.mobile.biorefa.fragmentos;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import br.edu.ifba.mobile.biorefa.BD.Aluno;
+import br.edu.ifba.mobile.biorefa.BD.FachadaBD;
 import br.edu.ifba.mobile.biorefa.BD.Tarefa;
 import br.edu.ifba.mobile.biorefa.R;
 import br.edu.ifba.mobile.biorefa.tarefas.GravacaoAlunos;
@@ -66,6 +69,8 @@ public class FragmentoCadastroAluno extends Fragment {
             }
         });
     }
+
+    @TargetApi(Build.VERSION_CODES.M)
     private Context getContexto(){
         return this.getContext();
     }
@@ -80,6 +85,32 @@ public class FragmentoCadastroAluno extends Fragment {
 
 
         return aluno;
+    }
+
+    public void exibirAlunos(){
+        aluno = FachadaBD.getInstancia().listarAlunos();
+        if(aluno.getCodigoAluno() == -1){
+            limparCampos();
+        } else
+            carregarCampos();
+    }
+
+    private void limparCampos(){
+        nomeAluno.setText("");
+        professor.setText("");
+        escola.setText("");
+        serieTurma.setText("");
+        materia.setText("");
+        turno.setText("");
+    }
+
+    private void carregarCampos(){
+        nomeAluno.setText(aluno.getNomeAluno());
+        professor.setText(aluno.getProfessor());
+        escola.setText(aluno.getEscola());
+        serieTurma.setText(aluno.getSerieTurma());
+        materia.setText(aluno.getMateria());
+        turno.setText(aluno.getTurno());
     }
 
 

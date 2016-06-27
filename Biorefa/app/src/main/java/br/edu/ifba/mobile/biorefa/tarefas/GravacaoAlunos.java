@@ -22,7 +22,7 @@ public class GravacaoAlunos extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         String mensagem = "";
-        long codigo = -1;
+        long codigo ;
         if(aluno.getCodigoAluno() == -1){
             codigo = FachadaBD.getInstancia().inserirAluno(aluno);
         }

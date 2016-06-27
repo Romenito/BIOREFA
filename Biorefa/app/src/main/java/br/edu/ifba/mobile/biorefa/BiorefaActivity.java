@@ -73,29 +73,6 @@ public class BiorefaActivity extends AppCompatActivity implements ViewPager.OnPa
         FachadaBD.criarInstancia(this.getApplicationContext());
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_biorefa, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -107,7 +84,9 @@ public class BiorefaActivity extends AppCompatActivity implements ViewPager.OnPa
             FragmentoListaTarefas.getInstancia().atualizar();
         } else if(position == 2){ // qnd passar pra 2 exibe a tarefa selecionada na 1
             FragmentoCadastroTarefas.getInstancia().exibirTarefaSelecionada();
-        }
+        } else if(position == 3) {
+        FragmentoCadastroAluno.getInstancia().exibirAlunos();
+    }
     }
 
     @Override
@@ -160,7 +139,7 @@ public class BiorefaActivity extends AppCompatActivity implements ViewPager.OnPa
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Informações";
+                    return "Infor";
                 case 1:
                     return "Respostas";
                 case 2:

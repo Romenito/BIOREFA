@@ -44,7 +44,7 @@ public class Tarefa {
 
 	@Override
 	public String toString() {
-		return atividade + "," +pesquisa+","+resposta;
+		return atividade + ", " +pesquisa+", "+resposta;
 
 	}
 

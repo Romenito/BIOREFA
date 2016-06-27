@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="br.edu.ifba.mobile.biorefa.BiorefaActivity">
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/remover_tarefas"
         android:orderInCategory="100"
         android:title="Remover"
         app:showAsAction="never" />

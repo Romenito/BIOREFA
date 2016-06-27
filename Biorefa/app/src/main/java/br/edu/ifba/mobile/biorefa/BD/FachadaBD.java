@@ -33,10 +33,10 @@ public class FachadaBD extends SQLiteOpenHelper {
 
 	private static String COMANDO_CRIACAO_TABELA_TAREFA =
 			"CREATE TABLE TAREFA(" + "CODIGO INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "ATIVIDADE TEXT, PESQUISA TEXT, RESPOSTA TEXT)"
+			+ "ATIVIDADE TEXT, PESQUISA TEXT, RESPOSTA TEXT);"
 	        +"CREATE TABLE ALUNO(" +
 			"CODIGOALUNO INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "NOMEALUNO TEXT, PROFESSOR TEXT, ESCOLA TEXT, MATERIA TEXT,SERIE TEXT,TURNO TEXT)";
+			+ "NOMEALUNO TEXT, PROFESSOR TEXT, ESCOLA TEXT, MATERIA TEXT,SERIE TEXT,TURNO TEXT);";
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
@@ -119,6 +119,26 @@ public class FachadaBD extends SQLiteOpenHelper {
 		return codigo;
 	}
 
+	public Aluno listarAlunos() { // ler alunos
+		SQLiteDatabase db = this.getReadableDatabase();
+		Aluno aluno= new Aluno();
+		String selecao = "SELECT CODIGOALUNO, NOMEALUNO, PROFESSOR, ESCOLA, MATERIA, SERIE, TURNO FROM ALUNO";
+		Cursor cursor = db.rawQuery(selecao, null);
+		if(cursor != null){
+			cursor.moveToFirst();
+			aluno.setCodigoAluno(cursor.getLong(cursor.getColumnIndex("CODIGOALUNO")));
+			aluno.setNomeAluno(cursor.getString(cursor.getColumnIndex("NOMEALUNO")));
+			aluno.setProfessor(cursor.getString(cursor.getColumnIndex("PROFESSOR")));
+			aluno.setEscola(cursor.getString(cursor.getColumnIndex("ESCOLA")));
+			aluno.setMateria(cursor.getString(cursor.getColumnIndex("MATERIA")));
+			aluno.setSerieTurma(cursor.getString(cursor.getColumnIndex("SERIE")));
+			aluno.setTurno(cursor.getString(cursor.getColumnIndex("TURNO")));
+
+
+		}
+		return aluno;
+	}
+
 	public long atualizarAluno(Aluno aluno) {
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues valores = new ContentValues();
@@ -133,5 +153,5 @@ public class FachadaBD extends SQLiteOpenHelper {
 		long codigo = db.update("ALUNO", valores, "CODIGOALUNO = " + aluno.getCodigoAluno(), null);
 		return codigo;
 	}
-	
+
 }
