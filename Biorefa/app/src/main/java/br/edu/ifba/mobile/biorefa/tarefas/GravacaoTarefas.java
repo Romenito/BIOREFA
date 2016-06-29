@@ -6,7 +6,9 @@ import android.widget.Toast;
 
 import br.edu.ifba.mobile.biorefa.BD.FachadaBD;
 import br.edu.ifba.mobile.biorefa.BD.Tarefa;
-
+/**
+ * Created by Romen on 22/06/2016.
+ */
 
 public class GravacaoTarefas extends AsyncTask<Void, Void, String> {
 

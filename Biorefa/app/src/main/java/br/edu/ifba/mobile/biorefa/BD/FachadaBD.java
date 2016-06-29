@@ -9,7 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Created by Romen on 22/06/2016.
+ */
 public class FachadaBD extends SQLiteOpenHelper {
 
 	private static FachadaBD instancia = null;
@@ -122,8 +124,8 @@ public class FachadaBD extends SQLiteOpenHelper {
 	}
 
 	public Aluno listarAlunos() { // ler alunos
-		SQLiteDatabase db = this.getReadableDatabase();
 		Aluno aluno= new Aluno();
+		SQLiteDatabase db = this.getReadableDatabase();
 		String selecao = "CODIGOALUNO, NOMEALUNO, PROFESSOR, ESCOLA, MATERIA, SERIE, TURNO";
 		Cursor cursor = db.query("ALUNO", new String[]{selecao}, null, null, null, null, null);
 		if (cursor.getCount() > 0) {

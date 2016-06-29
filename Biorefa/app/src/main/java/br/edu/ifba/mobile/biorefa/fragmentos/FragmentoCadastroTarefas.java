@@ -14,7 +14,9 @@ import android.widget.EditText;
 import br.edu.ifba.mobile.biorefa.BD.Tarefa;
 import br.edu.ifba.mobile.biorefa.R;
 import br.edu.ifba.mobile.biorefa.tarefas.GravacaoTarefas;
-
+/**
+ * Created by Romen on 22/06/2016.
+ */
 
 public class FragmentoCadastroTarefas extends Fragment {
 
@@ -101,7 +103,7 @@ public class FragmentoCadastroTarefas extends Fragment {
     private void carregarCampos(){
         atividade.setText(tarefa.getAtividade());
         pesquisa.setText(tarefa.getPesquisa());
-        resposta.setText(tarefa.getResposta());
+        resposta.setText("");
 
     }
 }

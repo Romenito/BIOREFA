@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import br.edu.ifba.mobile.biorefa.R;
-
+/**
+ * Created by Romen on 22/06/2016.
+ */
 
 public class FragmentoInformacao extends Fragment {
 

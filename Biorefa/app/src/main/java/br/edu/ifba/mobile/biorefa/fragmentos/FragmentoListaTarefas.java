@@ -19,6 +19,9 @@ import br.edu.ifba.mobile.biorefa.R;
 import br.edu.ifba.mobile.biorefa.tarefas.RemocaoTarefa;
 
 
+/**
+ * Created by Romen on 22/06/2016.
+ */
 public class FragmentoListaTarefas extends Fragment {
 
     private static FragmentoListaTarefas instancia = null;

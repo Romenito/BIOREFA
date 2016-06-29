@@ -1,7 +1,9 @@
 package br.edu.ifba.mobile.biorefa.BD;
 
 import java.text.DecimalFormat;
-
+/**
+ * Created by Romen on 22/06/2016.
+ */
 public class Tarefa {
 	private long codigo = -1;
 	private String atividade;

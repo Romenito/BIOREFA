@@ -24,7 +24,9 @@ import br.edu.ifba.mobile.biorefa.fragmentos.FragmentoCadastroAluno;
 import br.edu.ifba.mobile.biorefa.fragmentos.FragmentoCadastroTarefas;
 import br.edu.ifba.mobile.biorefa.fragmentos.FragmentoInformacao;
 import br.edu.ifba.mobile.biorefa.fragmentos.FragmentoListaTarefas;
-
+/**
+ * Created by Romen on 22/06/2016.
+ */
 public class BiorefaActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener{
 
     /**
