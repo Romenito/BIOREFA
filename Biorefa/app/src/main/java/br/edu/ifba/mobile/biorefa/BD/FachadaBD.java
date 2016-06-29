@@ -1,5 +1,6 @@
 package br.edu.ifba.mobile.biorefa.BD;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -33,13 +34,14 @@ public class FachadaBD extends SQLiteOpenHelper {
 
 	private static String COMANDO_CRIACAO_TABELA_TAREFA =
 			"CREATE TABLE TAREFA(" + "CODIGO INTEGER PRIMARY KEY AUTOINCREMENT, "
-			+ "ATIVIDADE TEXT, PESQUISA TEXT, RESPOSTA TEXT);"
-	        +"CREATE TABLE ALUNO(" +
+			+ "ATIVIDADE TEXT, PESQUISA TEXT, RESPOSTA TEXT);";
+	private static String COMANDO_CRIACAO_TABELA_TAREFA_ALUNO = "CREATE TABLE ALUNO(" +
 			"CODIGOALUNO INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ "NOMEALUNO TEXT, PROFESSOR TEXT, ESCOLA TEXT, MATERIA TEXT,SERIE TEXT,TURNO TEXT);";
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		db.execSQL(COMANDO_CRIACAO_TABELA_TAREFA_ALUNO);
 		db.execSQL(COMANDO_CRIACAO_TABELA_TAREFA);
 	}
 
@@ -86,7 +88,7 @@ public class FachadaBD extends SQLiteOpenHelper {
 
 		String selecao = "SELECT CODIGO, ATIVIDADE, PESQUISA, RESPOSTA FROM TAREFA";
 
-		Cursor cursor = db.rawQuery(selecao, null);
+		@SuppressLint("Recycle") Cursor cursor = db.rawQuery(selecao, null);
 		if(cursor != null){
 			boolean temProximo = cursor.moveToFirst();
 			while (temProximo){
@@ -122,9 +124,9 @@ public class FachadaBD extends SQLiteOpenHelper {
 	public Aluno listarAlunos() { // ler alunos
 		SQLiteDatabase db = this.getReadableDatabase();
 		Aluno aluno= new Aluno();
-		String selecao = "SELECT CODIGOALUNO, NOMEALUNO, PROFESSOR, ESCOLA, MATERIA, SERIE, TURNO FROM ALUNO";
-		Cursor cursor = db.rawQuery(selecao, null);
-		if(cursor != null){
+		String selecao = "CODIGOALUNO, NOMEALUNO, PROFESSOR, ESCOLA, MATERIA, SERIE, TURNO";
+		Cursor cursor = db.query("ALUNO", new String[]{selecao}, null, null, null, null, null);
+		if (cursor.getCount() > 0) {
 			cursor.moveToFirst();
 			aluno.setCodigoAluno(cursor.getLong(cursor.getColumnIndex("CODIGOALUNO")));
 			aluno.setNomeAluno(cursor.getString(cursor.getColumnIndex("NOMEALUNO")));
@@ -133,8 +135,6 @@ public class FachadaBD extends SQLiteOpenHelper {
 			aluno.setMateria(cursor.getString(cursor.getColumnIndex("MATERIA")));
 			aluno.setSerieTurma(cursor.getString(cursor.getColumnIndex("SERIE")));
 			aluno.setTurno(cursor.getString(cursor.getColumnIndex("TURNO")));
-
-
 		}
 		return aluno;
 	}
