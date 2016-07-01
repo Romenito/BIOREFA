@@ -141,7 +141,7 @@ public class BiorefaActivity extends AppCompatActivity implements ViewPager.OnPa
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Infor";
+                    return "Informação";
                 case 1:
                     return "Respostas";
                 case 2:

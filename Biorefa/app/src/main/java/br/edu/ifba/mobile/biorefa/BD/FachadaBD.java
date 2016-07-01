@@ -88,7 +88,7 @@ public class FachadaBD extends SQLiteOpenHelper {
 		List<Tarefa> tarefas = new ArrayList<Tarefa>();
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		String selecao = "SELECT CODIGO, ATIVIDADE, PESQUISA, RESPOSTA FROM TAREFA";
+		String selecao = "SELECT CODIGO, ATIVIDADE, PESQUISA, RESPOSTA FROM TAREFA ORDER BY ATIVIDADE";
 
 		@SuppressLint("Recycle") Cursor cursor = db.rawQuery(selecao, null);
 		if(cursor != null){

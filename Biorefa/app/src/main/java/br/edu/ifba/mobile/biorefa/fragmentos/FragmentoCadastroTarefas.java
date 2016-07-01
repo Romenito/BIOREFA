@@ -59,6 +59,7 @@ public class FragmentoCadastroTarefas extends Fragment {
             public void onClick(View v) {
                 GravacaoTarefas gravacao = new GravacaoTarefas(getContexto(), getTarefas());
                     gravacao.execute();
+                limparCampoResposta();
             }
         });
         botaoLimpar.setOnClickListener(new View.OnClickListener(){
@@ -100,10 +101,14 @@ public class FragmentoCadastroTarefas extends Fragment {
 
     }
 
+    private void limparCampoResposta(){
+        resposta.setText("");
+    }
+
     private void carregarCampos(){
         atividade.setText(tarefa.getAtividade());
         pesquisa.setText(tarefa.getPesquisa());
-        resposta.setText("");
+        resposta.setText(tarefa.getResposta());
 
     }
 }
